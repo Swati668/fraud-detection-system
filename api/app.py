@@ -57,6 +57,14 @@ def health():
         "timestamp": datetime.now(timezone.utc).isoformat()
     })
 
+
+import sys
+
+@app.route("/python-version")
+def python_version():
+    return {
+        "python": sys.version
+    }
 # ==========================================
 # Fraud Prediction Endpoint
 # ==========================================
