@@ -40,14 +40,16 @@ REQUIRED_COLUMNS = [
 ]
 
 # Root Endpoint
-
-@app.route("/")
+@app.route("/", methods=["GET"])
 def home():
     return jsonify({
-        "message": "Fraud Detection API is running",
-        "health": "/health",
-        "predict": "/fraud/predict"
-    })
+  "project": "Transaction Fraud Detection System",
+  "status": "running",
+  "model": "XGBoost",
+  "version": "v1",
+  "health_endpoint": "/health",
+  "prediction_endpoint": "/fraud/predict"
+})
 
 # Health Check Endpoint
 
@@ -59,8 +61,6 @@ def health():
         "model_version": MODEL_VERSION,
         "timestamp": datetime.now(timezone.utc).isoformat()
     })
-
-
 
 
 # Fraud Prediction Endpoint
