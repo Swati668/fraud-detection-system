@@ -291,7 +291,7 @@ if uploaded_file:
             )
 
             st.download_button(
-                label="📥 Download Analytics Dataset",
+                label="Download Analytics Dataset",
                 data=output_csv,
                 file_name="analytics_results.csv",
                 mime="text/csv"
