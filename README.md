@@ -166,14 +166,33 @@ Example response:
 ![Missing Columns](reports/screenshots/missing_columns.png)
 
 ## Tech Stack
+
+#### Machine Learning & Data Science
 * Python
-* Pandas, NumPy
+* Pandas
+* NumPy
 * Scikit-learn
 * XGBoost
-* Flask
-* SHAP
+* SHAP (Model Explainability)
 * Joblib
-* Render (Deployment)
+
+#### Backend Development
+* Flask (REST API)
+* RESTful API Design
+* JSON-based request/response handling
+
+#### Frontend / Dashboard
+* Streamlit
+* Interactive Data Visualization
+
+#### Deployment & DevOps
+* Docker
+* Docker Compose
+* Render (Cloud Deployment)
+
+#### Visualization & Analysis
+* Matplotlib
+* Seaborn (if used)
 
 ## Interactive Dashboard
 
@@ -207,6 +226,7 @@ streamlit run streamlit_app/app.py
 ```
 
 ## Project Structure
+
 Transaction Fraud Detection System
 
 api/
