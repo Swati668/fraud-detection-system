@@ -28,9 +28,11 @@ The system is designed to help a fraud detection company maximize revenue by cor
 XGBoost was selected as the final model.
 
 #### Metric	Score
+ROC-AUC 0.9998 
+PR-AUC 0.9326 
 Balanced Accuracy	0.93
 Precision	0.892
-Recall	0.86
+Recall	0.860
 F1 Score	0.876
 
 #### Model Comparison
@@ -172,6 +174,37 @@ Example response:
 * SHAP
 * Joblib
 * Render (Deployment)
+
+## Interactive Dashboard
+
+The project includes a Streamlit dashboard for real-time fraud analysis.
+
+### Dashboard Pages
+
+#### Home
+- Project overview
+- System architecture
+- Feature engineering pipeline
+- Technology stack
+
+#### Single Prediction
+Predict fraud risk for an individual transaction.
+
+#### Batch Prediction
+Upload a CSV file and score multiple transactions at once.
+
+#### Analytics Dashboard
+- Fraud rate analysis
+- Risk level distribution
+- Transaction type analysis
+- Fraud probability trends
+- High-risk transaction reporting
+
+### Run Dashboard
+
+```bash
+streamlit run streamlit_app/app.py
+```
 
 ## Project Structure
 Transaction Fraud Detection System
