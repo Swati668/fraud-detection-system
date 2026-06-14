@@ -46,7 +46,7 @@ ROC and Precision-Recall curves were used to evaluate model performance on unsee
 
 #### ROC Curve and Precision-Recall Curve(combined)
 <div align="center">
-  <img src="reports/figures/model_performance_curve.png" width="85%">
+  <img src="reports/figures/model_performance_curves.png" width="85%">
 </div>
 
 ## Model Explainability (SHAP)
@@ -210,36 +210,47 @@ streamlit run streamlit_app/app.py
 Transaction Fraud Detection System
 
 api/
-    app.py
-
-artifacts/
-    xgboost_fraud_detector.joblib
-
-data/
-    raw/
-    
+  app.py
 
 fraud/
-    __init__.py
-    fraud_model.py
+  init.py
+  fraud_model.py
+  
+artifacts/
+  xgboost_fraud_detector.joblib
+  
+data/
+  raw/
+  
+streamlit_app/
+  app.py
+  pages/
+    single_prediction.py
+    batch_prediction.py
+    analytics.py
+  utils/
+    api_client.py
 
 notebooks/
-    EDA.ipynb
-    model_training.ipynb
-    shap_analysis.ipynb
-
-reports/
-    figures/
-    screenshots/
+  EDA.ipynb
+  model_training.ipynb
+  shap_analysis.ipynb
 
 tests/
-    test_api.py
-    test_model_inference.py
+  test_api.py
+  test_model_inference.py
+
+reports/
+  figures/
+  screenshots/
 
 Dockerfile
+Dockerfile.streamlit
+docker-compose.yml
 Procfile
 runtime.txt
 requirements.txt
+.dockerignore
 README.md
 
 ## Key Learnings
