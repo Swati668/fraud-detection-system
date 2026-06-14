@@ -295,7 +295,7 @@ The project demonstrates an end-to-end ML workflow covering data preprocessing, 
 
 ---
 
-## Live Demo
+# Live Demo
 
 ### Streamlit Dashboard
 [Launch Dashboard](https://swati668-fraud-detection-system-streamlit-appapp-aj3ez4.streamlit.app)
