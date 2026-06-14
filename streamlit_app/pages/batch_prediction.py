@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 
-from utils.api_client import API_URL
+from utils.api_client import predict_batch
 
 st.set_page_config(
     page_title="Batch Prediction",
@@ -67,6 +67,9 @@ required_columns = [
 if uploaded_file:
 
     df = pd.read_csv(uploaded_file)
+    if df.empty:
+        st.warning("Uploaded CSV is empty")
+        st.stop()
 
     st.subheader("Preview")
 
@@ -107,15 +110,11 @@ if uploaded_file:
                 "Scoring transactions..."
             ):
 
-                response = requests.post(
-                    API_URL,
-                    json=records,
-                    timeout=120
-                )
-
-                response.raise_for_status()
-
-                api_response = response.json()
+                api_response = predict_batch(records)
+                if "results" not in api_response:
+                    st.error("Invalid API response format")
+                    st.json(api_response)
+                    st.stop()
 
             result_df = pd.DataFrame(
                 api_response["results"]
