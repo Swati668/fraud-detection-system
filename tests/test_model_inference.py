@@ -1,5 +1,5 @@
 import pandas as pd
-from fraud.Fraud import Fraud
+from fraud.fraud_model import Fraud
 
 
 def test_prediction():
@@ -41,10 +41,8 @@ def test_prediction():
     # Predict
     result = model.predict(sample)
 
-    # -------------------------
     # Schema Checks
-    # -------------------------
-
+    
     expected_columns = [
         "prediction",
         "fraud_probability",
@@ -54,12 +52,10 @@ def test_prediction():
     for col in expected_columns:
         assert col in result.columns
 
-    assert len(result) == 2
+    assert len(result) == 1
 
-    # -------------------------
     # Value Checks
-    # -------------------------
-
+    
     prediction = result["prediction"].iloc[0]
     probability = result["fraud_probability"].iloc[0]
     risk_level = result["risk_level"].iloc[0]

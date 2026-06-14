@@ -5,34 +5,29 @@ import os
 import pandas as pd
 from flask import Flask, request, jsonify
 
-from fraud.Fraud import Fraud
+from fraud.fraud_model import Fraud
 
-# ==========================================
 # Logging Configuration
-# ==========================================
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
-# ==========================================
-# Initialize Pipeline
-# ==========================================
+
+# Initializing Pipeline
 
 MODEL_VERSION = "v1"
 
 pipeline = Fraud()
 
-# ==========================================
-# Initialize Flask App
-# ==========================================
+
+# Initializing Flask App
 
 app = Flask(__name__)
 
-# ==========================================
+
 # Required Input Columns
-# ==========================================
 
 REQUIRED_COLUMNS = [
     "step",
@@ -44,9 +39,8 @@ REQUIRED_COLUMNS = [
     "newbalanceDest"
 ]
 
-# ==========================================
+
 # Health Check Endpoint
-# ==========================================
 
 @app.route("/health", methods=["GET"])
 def health():
@@ -59,9 +53,8 @@ def health():
 
 
 
-# ==========================================
+
 # Fraud Prediction Endpoint
-# ==========================================
 
 @app.route("/fraud/predict", methods=["POST"])
 def fraud_predict():
@@ -157,10 +150,8 @@ def fraud_predict():
         }), 500
 
 
-# ==========================================
-# Run Application
-# ==========================================
 
+# Run Application
 
 if __name__ == "__main__":
 

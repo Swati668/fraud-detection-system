@@ -10,10 +10,8 @@ class Fraud:
     def __init__(self):
 
         self.base_dir = Path(__file__).resolve().parent.parent
-
-        self.model = joblib.load(
-            self.base_dir / "artifacts" / "xgboost_fraud_detector.joblib"
-        )
+        self.model = joblib.load(self.base_dir / "artifacts" 
+                                 / "xgboost_fraud_detector.joblib")
 
         print("Model loaded successfully")
 
@@ -21,25 +19,17 @@ class Fraud:
 
         df = df.copy()
 
-        df.columns = [
-            inflection.underscore(col)
-            for col in df.columns
-        ]
-
+        df.columns = [inflection.underscore(col) for col in df.columns]
         return df
 
     def feature_engineering(self, df):
 
-        df["diff_new_old_balance"] = (
-            df["newbalance_orig"]
-            - df["oldbalance_org"]
-        )
+        df["diff_new_old_balance"] = (df["newbalance_orig"] 
+                                      - df["oldbalance_org"])
 
-        df["diff_new_old_dest"] = (
-            df["newbalance_dest"]
-            - df["oldbalance_dest"]
+        df["diff_new_old_dest"] = (df["newbalance_dest"] 
+                                   - df["oldbalance_dest"]
         )
-
         return df
 
     def get_risk_level(self, probability):
@@ -60,7 +50,6 @@ class Fraud:
         # Feature Engineering
         df2 = self.feature_engineering(df1)
 
-        # Pipeline handles preprocessing internally
         predictions = self.model.predict(df2)
 
         probabilities = self.model.predict_proba(df2)[:, 1]
@@ -71,9 +60,8 @@ class Fraud:
 
         result["fraud_probability"] = probabilities
 
-        result["risk_level"] = [
-            self.get_risk_level(prob)
-            for prob in probabilities
+        result["risk_level"] = [self.get_risk_level(prob) 
+                                for prob in probabilities
         ]
 
         return result
