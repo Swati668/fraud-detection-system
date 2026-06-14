@@ -210,39 +210,39 @@ streamlit run streamlit_app/app.py
 Transaction Fraud Detection System
 
 api/
-  app.py
+    app.py
 
 fraud/
-  init.py
-  fraud_model.py
-  
+    __init__.py
+    fraud_model.py
+
 artifacts/
-  xgboost_fraud_detector.joblib
-  
+    xgboost_fraud_detector.joblib
+
 data/
-  raw/
-  
+    raw/
+
 streamlit_app/
-  app.py
-  pages/
-    single_prediction.py
-    batch_prediction.py
-    analytics.py
-  utils/
-    api_client.py
+    app.py
+    pages/
+        single_prediction.py
+        batch_prediction.py
+        analytics.py
+    utils/
+        api_client.py
 
 notebooks/
-  EDA.ipynb
-  model_training.ipynb
-  shap_analysis.ipynb
+    EDA.ipynb
+    model_training.ipynb
+    shap_analysis.ipynb
 
 tests/
-  test_api.py
-  test_model_inference.py
+    test_api.py
+    test_model_inference.py
 
 reports/
-  figures/
-  screenshots/
+    figures/
+    screenshots/
 
 Dockerfile
 Dockerfile.streamlit
@@ -250,7 +250,6 @@ docker-compose.yml
 Procfile
 runtime.txt
 requirements.txt
-.dockerignore
 README.md
 
 ## Key Learnings
