@@ -36,19 +36,36 @@ The model will score every transaction and return:
 # })
 
 
+# Fraud Transactions
 
-sample_df = pd.DataFrame({
-    "step": [1, 2, 3, 4, 5],
-    "type": ["TRANSFER", "CASH_OUT", "PAYMENT", "TRANSFER", "CASH_OUT"],
+df = pd.read_csv("../data/raw/fraud_0.1origbase.csv")
 
-    "amount": [10000, 5000, 2500, 95000, 80000],
+fraud_df = df[df["isFraud"] == 1]
+fraud_df.head()
 
-    "oldbalanceOrg": [20000, 10000, 5000, 95000, 80000],
-    "newbalanceOrig": [10000, 5000, 2500, 0, 0],
+# Non-fraud Transactions
 
-    "oldbalanceDest": [0, 0, 1000, 0, 0],
-    "newbalanceDest": [10000, 5000, 3500, 95000, 80000]
-})
+legit_df = df[df["isFraud"] == 0]
+legit_df.head()
+ 
+# Combined
+
+fraud_sample = fraud_df.sample(3, random_state=42)
+legit_sample = legit_df.sample(2, random_state=42)
+
+sample_df = pd.concat(
+    [fraud_sample, legit_sample],
+    ignore_index=True
+)
+
+sample_df = sample_df.drop(
+    columns=[
+        "nameOrig",
+        "nameDest",
+        "isFraud",
+        "isFlaggedFraud"
+    ]
+)
 
 csv = sample_df.to_csv(index=False).encode("utf-8")
 
