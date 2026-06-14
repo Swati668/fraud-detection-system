@@ -3,7 +3,7 @@ import requests
 
 API_URL = os.getenv(
     "API_URL",
-    "http://localhost:5001"
+    "https://fraud-detection-api-dzc8.onrender.com"
 )
 
 def predict_transaction(payload):
