@@ -39,6 +39,15 @@ REQUIRED_COLUMNS = [
     "newbalanceDest"
 ]
 
+# Root Endpoint
+
+@app.route("/")
+def home():
+    return jsonify({
+        "message": "Fraud Detection API is running",
+        "health": "/health",
+        "predict": "/fraud/predict"
+    })
 
 # Health Check Endpoint
 
