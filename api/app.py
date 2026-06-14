@@ -144,6 +144,7 @@ def fraud_predict():
                 datetime.now(
                     timezone.utc
                 ).isoformat(),
+            "risk_calculation": "percentile_based",
             "results": results
         })
 
