@@ -35,37 +35,7 @@ The model will score every transaction and return:
 #     "newbalanceDest": [10000, 5000, 3500, 25000, 75000]
 # })
 
-
-# Fraud Transactions
-
-df = pd.read_csv("../data/raw/fraud_0.1origbase.csv")
-
-fraud_df = df[df["isFraud"] == 1]
-fraud_df.head()
-
-# Non-fraud Transactions
-
-legit_df = df[df["isFraud"] == 0]
-legit_df.head()
- 
-# Combined
-
-fraud_sample = fraud_df.sample(3, random_state=42)
-legit_sample = legit_df.sample(2, random_state=42)
-
-sample_df = pd.concat(
-    [fraud_sample, legit_sample],
-    ignore_index=True
-)
-
-sample_df = sample_df.drop(
-    columns=[
-        "nameOrig",
-        "nameDest",
-        "isFraud",
-        "isFlaggedFraud"
-    ]
-)
+sample_df = pd.read_csv("data/sample_transactions.csv")
 
 csv = sample_df.to_csv(index=False).encode("utf-8")
 
