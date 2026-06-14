@@ -25,14 +25,29 @@ The model will score every transaction and return:
 
 # Sample CSV Download
 
+# sample_df = pd.DataFrame({
+#     "step": [1, 2, 3, 4, 5],
+#     "type": ["TRANSFER", "CASH_OUT", "PAYMENT", "CASH_IN", "TRANSFER"],
+#     "amount": [10000, 5000, 2500, 15000, 75000],
+#     "oldbalanceOrg": [20000, 10000, 5000, 0, 80000],
+#     "newbalanceOrig": [10000, 5000, 2500, 15000, 5000],
+#     "oldbalanceDest": [0, 0, 1000, 10000, 0],
+#     "newbalanceDest": [10000, 5000, 3500, 25000, 75000]
+# })
+
+
+
 sample_df = pd.DataFrame({
     "step": [1, 2, 3, 4, 5],
-    "type": ["TRANSFER", "CASH_OUT", "PAYMENT", "CASH_IN", "TRANSFER"],
-    "amount": [10000, 5000, 2500, 15000, 75000],
-    "oldbalanceOrg": [20000, 10000, 5000, 0, 80000],
-    "newbalanceOrig": [10000, 5000, 2500, 15000, 5000],
-    "oldbalanceDest": [0, 0, 1000, 10000, 0],
-    "newbalanceDest": [10000, 5000, 3500, 25000, 75000]
+    "type": ["TRANSFER", "CASH_OUT", "PAYMENT", "TRANSFER", "CASH_OUT"],
+
+    "amount": [10000, 5000, 2500, 95000, 80000],
+
+    "oldbalanceOrg": [20000, 10000, 5000, 95000, 80000],
+    "newbalanceOrig": [10000, 5000, 2500, 0, 0],
+
+    "oldbalanceDest": [0, 0, 1000, 0, 0],
+    "newbalanceDest": [10000, 5000, 3500, 95000, 80000]
 })
 
 csv = sample_df.to_csv(index=False).encode("utf-8")
@@ -111,6 +126,7 @@ if uploaded_file:
             ):
 
                 api_response = predict_batch(records)
+
                 if "results" not in api_response:
                     st.error("Invalid API response format")
                     st.json(api_response)
