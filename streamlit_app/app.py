@@ -136,7 +136,7 @@ with col2:
 """)
 
 st.caption(
-    "Additional features were created to capture temporal patterns and balance movement behaviour."
+    "Additional features were engineered to better capture time-based patterns and variations in transaction behavior."
 )
 
 st.divider()
@@ -189,7 +189,7 @@ with col6:
     )
 
 st.caption(
-    "Performance measured on the held-out test dataset."
+    "Model performance was evaluated using a separate held-out test dataset to ensure unbiased assessment."
 )
 
 #Key Capabilities

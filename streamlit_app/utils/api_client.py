@@ -34,7 +34,8 @@ API_URL = os.getenv(
 
 PREDICT_ENDPOINT = f"{API_URL}/fraud/predict"
 
-
+print("DEBUG API_URL:", API_URL)
+print("DEBUG ENDPOINT:", PREDICT_ENDPOINT)
 def predict_transaction(payload):
     response = requests.post(
         PREDICT_ENDPOINT,
@@ -46,6 +47,7 @@ def predict_transaction(payload):
 
 
 def predict_batch(payload):
+        
     response = requests.post(
         PREDICT_ENDPOINT,
         json=payload,
